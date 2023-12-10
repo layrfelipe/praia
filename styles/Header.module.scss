@@ -1,0 +1,19 @@
+@media (max-width: 640px) {
+    .header {
+        width: 100%;
+        height: 10vh;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background: #537845;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        h1 {
+            color: white;
+            font-size: 64px;
+            text-align: center;
+            vertical-align: middle;
+        }
+    }    
+}

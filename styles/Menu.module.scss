@@ -1,0 +1,39 @@
+@media (max-width: 640px) {
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 4vh;
+
+        .optionsGrid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            .optionContainer {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 15vh;
+
+                h3 {
+                    margin-top: 2vh;
+                    font-size: 32px;
+                }
+            }
+        }
+
+        button {
+            width: 80%;
+            border: 2px solid black;
+            margin-top: 2vh;
+            padding: 3vh 0;
+            font-size: 40px;
+        }
+    }
+        
+}

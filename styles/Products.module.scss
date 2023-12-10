@@ -1,0 +1,84 @@
+@media (max-width: 640px) {
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .products {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            .productContainer {
+                width: 100%;
+                display: flex;
+                padding-right: 4vw;
+
+                .imageContainer {
+                    width: 35vw;
+                    height: 35vw;
+                    position: relative;
+                }
+
+                .dataContainer {
+                    width: 70vw;
+                    padding-top: 1vh;
+                    padding-left: 2vw;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    .data {
+
+                        h4 {
+                            font-size: 36px;
+                        }
+                    }
+
+                    .actions {
+                        display: flex;
+                        width: 100%;
+                        justify-content: space-between;
+
+                        .btns {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            .less, .plus {
+                                color: white;
+                                font-size: 40px;
+                                width: 5vh;
+                                height: 5vh;
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                vertical-align: middle;
+                            }
+
+                            .less {
+                                background: #dc3333;
+                            }
+
+                            .plus {
+                                background: #537845;
+                                margin-left: 2vw;
+                            }
+                        }
+
+                        .amount {
+                            width: fit-content;
+                            
+                            h4 {
+                                font-size: 48px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
