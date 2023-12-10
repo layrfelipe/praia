@@ -15,6 +15,7 @@
                 width: 100%;
                 display: flex;
                 padding-right: 4vw;
+                border-bottom: 4px solid #537845;
 
                 .imageContainer {
                     width: 35vw;
@@ -56,7 +57,7 @@
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
-                                vertical-align: middle;
+                                text-align: center;
                             }
 
                             .less {
@@ -78,6 +79,17 @@
                         }
                     }
                 }
+            }
+        }
+
+        #confirm {
+            font-size: 36px;
+            width: 80%;
+            margin-top: 4vh;
+
+            .link {
+                text-decoration: none;
+                color: white;
             }
         }
     }

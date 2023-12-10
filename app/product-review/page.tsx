@@ -1,4 +1,5 @@
 import styles from "../../styles/ProductReview.module.scss"
+import Link from "next/link"
 
 export default function ProductReview() {
   return (
@@ -28,8 +29,16 @@ export default function ProductReview() {
                 <h3>TOTAL: R$81,00</h3>
 
                 <div className={styles.actionsContainer}>
-                    <button id={styles.edit}>EDITAR</button>
-                    <button id={styles.confirm}>CONFIRMAR</button>
+                    <button id={styles.edit}>
+                        <Link href="/drinks" className={styles.link}>
+                            EDITAR
+                        </Link>
+                    </button>
+                    <button id={styles.confirm}>
+                        <Link href="/order-finished" className={styles.link}>
+                            CONFIRMAR
+                        </Link>
+                    </button>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
 import styles from "../styles/Home.module.scss"
+import Link from "next/link"
 
 export default function Home() {
   return (
@@ -12,7 +13,9 @@ export default function Home() {
         </div>
 
         <button>
-          TIRAR FOTO
+          <Link href="/menu" className={styles.link}>
+            TIRAR FOTO
+          </Link>
         </button>
       </div>
     </main>

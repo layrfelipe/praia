@@ -12,4 +12,16 @@
 body {
   background: #e6e6e6;
   color: #434343;
+
+  button {
+    background: #537845;
+    color: white;
+    padding: 2vh 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 10px;
+    margin: 0 2vw;
+  }
 }

@@ -1,9 +1,9 @@
-import styles from "../../styles/Products.module.scss"
+import styles from "../../styles/Drinks.module.scss"
 import Image from "next/image"
-
+import Link from "next/link";
 import heineken from "../../public/images/heineken.png";
 
-export default function Products() {
+export default function Drinks() {
   return (
       <div className={styles.container}>
         <div className={styles.products}>
@@ -76,6 +76,12 @@ export default function Products() {
                 </div>
             </div>
         </div>
+
+        <button id={styles.confirm}>
+            <Link href="/product-review" className={styles.link}>
+                FAZER PEDIDO
+            </Link>
+        </button>
       </div>
   )
 }

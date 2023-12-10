@@ -1,3 +1,4 @@
+import Link from "next/link"
 import styles from "../../styles/OrderFinished.module.scss"
 import { FaCheck } from "react-icons/fa"
 
@@ -12,7 +13,11 @@ export default function OrderFinished() {
 
         <h3>Obrigado pela preferência! Agora é só esperar e relaxar...</h3>
 
-        <button>VOLTAR PARA O CARDÁPIO</button>
+        <button>
+          <Link href="/menu" className={styles.link}>
+            VOLTAR PARA O MENU
+          </Link>
+        </button>
       </div>
   )
 }
