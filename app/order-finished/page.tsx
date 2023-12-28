@@ -1,8 +1,15 @@
-import Link from "next/link"
+"use client";
 import styles from "../../styles/OrderFinished.module.scss"
 import { FaCheck } from "react-icons/fa"
+import { useRouter } from "next/navigation"
 
 export default function OrderFinished() {
+  const router = useRouter()
+
+  function backToMenu() {
+    router.push("/menu")
+  }
+
   return (
       <div className={styles.container}>
         <div className={styles.iconContainer}>
@@ -13,10 +20,8 @@ export default function OrderFinished() {
 
         <h3>Obrigado pela preferência! Agora é só esperar e relaxar...</h3>
 
-        <button>
-          <Link href="/menu" className={styles.link}>
+        <button onClick={() => backToMenu()}>
             VOLTAR PARA O MENU
-          </Link>
         </button>
       </div>
   )

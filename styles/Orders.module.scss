@@ -5,7 +5,9 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        border: 1px solid red;
+        
+        font-size: 3rem;
+        padding-top: 40vh;
 
         .products {
             width: 100%;
@@ -19,12 +21,12 @@
                 .imageContainer {
                     width: 30vw;
                     height: 30vw;
-                    border: 1px solid red;
+                    // border: 1px solid red;
                 }
 
                 .dataContainer {
                     width: 70vw;
-                    border: 1px solid blue;
+                    // border: 1px solid blue;
                 }
             }
         }

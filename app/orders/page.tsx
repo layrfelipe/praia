@@ -3,7 +3,7 @@ import styles from "../../styles/Orders.module.scss"
 export default function Orders() {
   return (
       <div className={styles.container}>
-        <div className={styles.products}>
+        {/* <div className={styles.products}>
             <div className={styles.productContainer}>
                 <div className={styles.imageContainer}>
 
@@ -21,7 +21,8 @@ export default function Orders() {
                     PEDRO HENRIQUE                
                 </div>
             </div>
-        </div>
+        </div> */}
+        EM DESENVOLVIMENTO...
       </div>
   )
 }

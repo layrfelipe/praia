@@ -1,47 +1,92 @@
+"use client";
+import { useEffect, useState } from "react"
 import styles from "../../styles/ProductReview.module.scss"
 import Link from "next/link"
+import { useRouter } from "next/navigation";
 
 export default function ProductReview() {
-  return (
-      <div className={styles.container}>
-        <div className={styles.orderDataContainer}>
-            <h2>REVISE SEU PEDIDO #2</h2>
+    const router = useRouter();
 
-            <div className={styles.itensList}>
-                <div className={styles.itemContainer}>
-                    <div>2x</div>
-                    <div>Brahma 600ml</div>
-                    <div>R$26,00</div>
-                </div>
+    const [currentOrderData, setCurrentOrderData] = useState({
+        heinekenAmount: 0,
+        brahmaAmount: 0,
+        antarcticaAmount: 0        
+    })
 
-                <div className={styles.itemContainer}>
-                    <div>2x</div>
-                    <div>Cadeira</div>
-                    <div>R$20,00</div>
-                </div>
+    useEffect(() => {
+        const currentOrderFromLS = JSON.parse(localStorage.getItem("CURRENT_ORDER")!)
+        setCurrentOrderData(currentOrderFromLS)
+    }, [])
 
-                <div className={styles.itemContainer}>
-                    <div>1x</div>
-                    <div>Guarda-Sol M</div>
-                    <div>R$35,00</div>
-                </div>
+    function confirmOrder() {
+        const ordersFromLS = localStorage.getItem("ORDERS")
+        if (ordersFromLS) {
+            const orders = JSON.parse(ordersFromLS)
+            orders.push({
+                heinekenAmount: currentOrderData.heinekenAmount,
+                brahmaAmount: currentOrderData.brahmaAmount,
+                antarcticaAmount: currentOrderData.antarcticaAmount
+            })
 
-                <h3>TOTAL: R$81,00</h3>
+            localStorage.setItem("ORDERS", JSON.stringify(orders))
+        }
+        localStorage.setItem("CURRENT_ORDER", JSON.stringify({
+            heinekenAmount: 0,
+            brahmaAmount: 0,
+            antarcticaAmount: 0,
+        }))
+        router.push("/order-finished")
+    }
 
-                <div className={styles.actionsContainer}>
-                    <button id={styles.edit}>
-                        <Link href="/drinks" className={styles.link}>
+    function editOrder() {
+        router.push("/drinks")
+    }
+
+    return (
+        <div className={styles.container}>
+            <div className={styles.orderDataContainer}>
+                <h2>REVISE SEU PEDIDO #2</h2>
+
+                <div className={styles.itensList}>
+                    {
+                        currentOrderData.heinekenAmount > 0 &&
+                        <div className={styles.itemContainer}>
+                            <div>{currentOrderData.heinekenAmount}x</div>
+                            <div>Heineken 600ml</div>
+                            <div>{currentOrderData.heinekenAmount * 16},00</div>
+                        </div>
+                    }
+
+                    {
+                        currentOrderData.brahmaAmount > 0 &&
+                        <div className={styles.itemContainer}>
+                            <div>{currentOrderData.brahmaAmount}x</div>
+                            <div>Brahma 600ml</div>
+                            <div>{currentOrderData.brahmaAmount * 13},00</div>
+                        </div>
+                    }
+
+                    {
+                        currentOrderData.antarcticaAmount > 0 &&
+                        <div className={styles.itemContainer}>
+                            <div>{currentOrderData.antarcticaAmount}x</div>
+                            <div>Antarctica 600ml</div>
+                            <div>{currentOrderData.antarcticaAmount * 13},00</div>
+                        </div>
+                    }
+
+                    <h3>TOTAL: R${(currentOrderData.heinekenAmount * 16) + (currentOrderData.brahmaAmount * 13) + (currentOrderData.antarcticaAmount * 13)},00</h3>
+
+                    <div className={styles.actionsContainer}>
+                        <button id={styles.edit} onClick={() => editOrder()}>
                             EDITAR
-                        </Link>
-                    </button>
-                    <button id={styles.confirm}>
-                        <Link href="/order-finished" className={styles.link}>
+                        </button>
+                        <button id={styles.confirm} onClick={() => confirmOrder()}>
                             CONFIRMAR
-                        </Link>
-                    </button>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-      </div>
-  )
+    )
 }

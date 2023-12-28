@@ -1,4 +1,5 @@
-import styles from "../../styles/Menu.module.scss"
+import Link from "next/link"
+import styles from "../../styles/PictureReview.module.scss"
 
 export default function PictureReview() {
   return (
@@ -8,8 +9,13 @@ export default function PictureReview() {
         </div>
 
         <div className={styles.actions}>
-            <button>TIRAR OUTRA</button>
-            <button>CONFIRMAR</button>
+            <Link href="/menu">
+              CONFIRMAR
+            </Link>
+
+            <Link href="/" id={styles.anotherPicBtn}>
+              TIRAR OUTRA
+            </Link>
         </div>
       </div>
   )
