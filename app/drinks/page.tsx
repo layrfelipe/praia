@@ -72,7 +72,7 @@ export default function Drinks() {
                     <div className={styles.dataContainer}>
                         <div className={styles.data}>
                             <h4>HEINEKEN 330 ML</h4>
-                            <h4>R$12,00</h4>
+                            <h4>R$16,00</h4>
                         </div>
 
                         <div className={styles.actions}>
