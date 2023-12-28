@@ -1,13 +1,28 @@
 "use client";
 import { useRouter } from "next/navigation";
 import styles from "../styles/Home.module.scss"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const router = useRouter()
   
   const [name, setName] = useState("")
   const [storeNumber, setStoreNumber] = useState("")
+  const [isKnownUser, setIsKnownUser] = useState({
+    name: undefined,
+    storeNumber: undefined
+  })
+
+  useEffect(() => {
+    const userData = localStorage.getItem("USER_DATA")
+    if (userData) {
+      let parsedUserData = JSON.parse(userData)
+      setIsKnownUser({
+        name: parsedUserData.name,
+        storeNumber: parsedUserData.storeNumber
+      })
+    }
+  }, [])
   
   function takePictureAndAdvance() {
     if (!name || !storeNumber) {
@@ -22,6 +37,12 @@ export default function Home() {
     router.push("/picture-review");
   }
 
+  function advanceAsKnownUser() {
+    if (isKnownUser.name && isKnownUser.storeNumber) {
+      router.push("/menu");
+    }
+  }
+
   return (
     <main className={styles.main}>
       <div className={styles.content}>
@@ -32,9 +53,15 @@ export default function Home() {
           <input placeholder="Digite o número da barraca" onChange={e => setStoreNumber(e.target.value)}></input>
         </div>
 
-          <button onClick={() => takePictureAndAdvance()}>
-            TIRAR FOTO
-          </button>
+        <button onClick={() => takePictureAndAdvance()}>
+          TIRAR FOTO
+        </button>
+
+        {
+          isKnownUser.name &&
+          <button onClick={() => advanceAsKnownUser()}>
+            CONTINUAR COMO {isKnownUser.name}
+          </button>}
       </div>
     </main>
   )
