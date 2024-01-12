@@ -1,0 +1,60 @@
+@media (max-width: 640px) {
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 4vh;
+
+        .optionsGrid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            row-gap: 8vh;
+
+            .optionContainer {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 15vh;
+                text-decoration: none;
+                color: #434343;
+
+                h3 {
+                    margin-top: 2vh;
+                    font-size: 32px;
+                    text-decoration: none;
+                    color: #434343;
+                }
+
+                .disabled {
+                    color: #c9c9c9;
+                }
+            }
+        }
+
+        .divider {
+            width: 80%;
+            height: 1vh;
+            background: #434343;
+            border-radius: 10px;
+        }
+
+        .tentStatusWrapper {
+            width: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 5vh;
+
+            h3 {
+                font-size: 2.5rem;
+            }
+        }
+    }
+        
+}

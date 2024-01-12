@@ -1,7 +1,11 @@
-import Link from "next/link"
+"use client";
+
 import styles from "../../styles/PictureReview.module.scss"
+import { useRouter } from "next/navigation"
 
 export default function PictureReview() {
+  const router = useRouter();
+
   return (
       <div className={styles.container}>
         <div className={styles.pictureContainer}>
@@ -9,13 +13,13 @@ export default function PictureReview() {
         </div>
 
         <div className={styles.actions}>
-            <Link href="/menu">
-              CONFIRMAR
-            </Link>
+          <button onClick={() => { router.push("/menu") }}>
+            CONFIRMAR
+          </button>
 
-            <Link href="/" id={styles.anotherPicBtn}>
-              TIRAR OUTRA
-            </Link>
+          <button onClick={() => { router.push("/") }} id={styles.anotherPicBtn}>
+            TIRAR OUTRA
+          </button>
         </div>
       </div>
   )

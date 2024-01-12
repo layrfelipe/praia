@@ -61,7 +61,6 @@ export default function Drinks() {
         router.push("/product-review")
     }
 
-
     return (
         <div className={styles.container}>
             <div className={styles.products}>

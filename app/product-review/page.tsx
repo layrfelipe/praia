@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react"
 import styles from "../../styles/ProductReview.module.scss"
-import Link from "next/link"
 import { useRouter } from "next/navigation";
 
 export default function ProductReview() {
@@ -25,11 +24,14 @@ export default function ProductReview() {
             orders.push({
                 heinekenAmount: currentOrderData.heinekenAmount,
                 brahmaAmount: currentOrderData.brahmaAmount,
-                antarcticaAmount: currentOrderData.antarcticaAmount
+                antarcticaAmount: currentOrderData.antarcticaAmount,
+                value: (currentOrderData.heinekenAmount * 16) + (currentOrderData.brahmaAmount * 13) + (currentOrderData.antarcticaAmount * 13),
+                index: orders.length
             })
 
             localStorage.setItem("ORDERS", JSON.stringify(orders))
         }
+
         localStorage.setItem("CURRENT_ORDER", JSON.stringify({
             heinekenAmount: 0,
             brahmaAmount: 0,

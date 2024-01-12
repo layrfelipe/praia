@@ -7,40 +7,30 @@ export default function Home() {
   const router = useRouter()
   
   const [name, setName] = useState("")
-  const [storeNumber, setStoreNumber] = useState("")
-  const [isKnownUser, setIsKnownUser] = useState({
-    name: undefined,
-    storeNumber: undefined
-  })
+  const [tentNumber, setTentNumber] = useState("")
+  const [isKnownUser, setIsKnownUser] = useState(false)
 
   useEffect(() => {
     const userData = localStorage.getItem("USER_DATA")
     if (userData) {
       let parsedUserData = JSON.parse(userData)
-      setIsKnownUser({
-        name: parsedUserData.name,
-        storeNumber: parsedUserData.storeNumber
-      })
+      setIsKnownUser(true)
+      setName(parsedUserData.name)
+      setTentNumber(parsedUserData.tentNumber)
     }
   }, [])
   
   function takePictureAndAdvance() {
-    if (!name || !storeNumber) {
+    if ((!name || !tentNumber) && (!isKnownUser)) {
       alert("Revise os dados preenchidos. Não deixe campos em branco.")
       return
     }
     const inputData = {
       "name": name,
-      "storeNumber": storeNumber
+      "tentNumber": tentNumber
     }
     localStorage.setItem("USER_DATA", JSON.stringify(inputData))
     router.push("/picture-review");
-  }
-
-  function advanceAsKnownUser() {
-    if (isKnownUser.name && isKnownUser.storeNumber) {
-      router.push("/menu");
-    }
   }
 
   return (
@@ -49,19 +39,13 @@ export default function Home() {
         <div className={styles.profilePictureWrapper}></div>
 
         <div className={styles.inputWrapper}>
-          <input placeholder="Digite seu nome" onChange={e => setName(e.target.value)}></input>
-          <input placeholder="Digite o número da barraca" onChange={e => setStoreNumber(e.target.value)}></input>
+          <input placeholder="Digite seu nome" onChange={e => setName(e.target.value)} value={isKnownUser ? name : ""}></input>
+          <input placeholder="Digite o número da barraca" onChange={e => setTentNumber(e.target.value)} value={isKnownUser ? tentNumber : ""}></input>
         </div>
 
         <button onClick={() => takePictureAndAdvance()}>
           TIRAR FOTO
         </button>
-
-        {
-          isKnownUser.name &&
-          <button onClick={() => advanceAsKnownUser()}>
-            CONTINUAR COMO {isKnownUser.name}
-          </button>}
       </div>
     </main>
   )

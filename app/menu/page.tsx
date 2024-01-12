@@ -45,7 +45,7 @@ export default function Menu() {
             </div>
 
             <button onClick={() => router.push("/my-orders")}>MEUS PEDIDOS</button>
-            <button onClick={() => router.push("/developing")}>FECHAR COMANDA</button>
+            <button onClick={() => router.push("/close-tab")}>FECHAR COMANDA</button>
         </div>
     )
 }
